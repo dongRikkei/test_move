@@ -30,7 +30,7 @@ public class HomeController {
 
     @GetMapping("/home")
     public String homeIndex() {
-        return "index";
+        return "home";
     }
 
     @PostMapping("/user/{id}")
