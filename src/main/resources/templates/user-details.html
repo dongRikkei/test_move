@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Navigation Bar (You can reuse your existing navigation bar) -->
+<!-- ... -->
+
+<div class="container">
+    <h2>User Details</h2>
+
+    <div class="alert alert-success">
+        Hello <strong><span th:text="${#authentication.principal.username}"></span></strong>
+        Login Successful.
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">User Information</div>
+        <div class="panel-body">
+            <p><strong>Username:</strong> <span th:text="${user.getEmail()}"></span></p>
+            <p><strong>First Name:</strong> <span th:text="${user.getFirstName()}"></span></p>
+            <p><strong>Last Name:</strong> <span th:text="${user.getLastName()}"></span></p>
+            <!-- Add more user information fields as needed -->
+        </div>
+    </div>
+
+    <!-- CSRF Token (if needed) -->
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+</div>
+
+</body>
+</html>
