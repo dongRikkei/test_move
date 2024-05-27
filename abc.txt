@@ -1,2 +1,60 @@
-adsadas
-fsafas
+A. clone code từ một repo trên Git và sau đó push lên repo của mình
+GIt: 1 local (code tren may tinh cua minh)
+2 remote (code tren github)
+
+1.
+git clone https://github.com/username/original-repo.git
+cd original-repo
+
+2. Tạo 1 repo mới của mình
+3. Thay đổi remote URL để đẩy lên repo mới
+git remote remove origin
+git remote add origin https://github.com/yourusername/new-repo.git
+
+4.Push mã nguôn lên remo cua mình
+git push -u origin main
+
+
+
+B. 
+
+1. git reset --soft
+Mục đích: Di chuyển HEAD về một commit trước đó nhưng giữ 
+nguyên các thay đổi trong staging area và working directory.
+Khi nào sử dụng: Khi bạn muốn thay đổi lịch sử commit nhưng vẫn 
+giữ nguyên các thay đổi để có thể commit lại.
+
+Ví dụ: 
+A - B - C (HEAD)
+
+git reset --soft HEAD~1
+
+A - B (HEAD)
+
+Các thay đổi từ commit C vẫn còn trong staging area.	
+
+git reset --hard
+Mục đích: Di chuyển HEAD về một commit trước đó và loại bỏ tất cả các
+ thay đổi trong staging area và working directory.
+Khi nào sử dụng: Khi bạn muốn hủy bỏ hoàn toàn các thay đổi 
+chưa commit và không cần giữ lại bất kỳ thứ gì từ chúng.
+
+git reset --hard HEAD~1
+
+A - B (HEAD)
+
+Các thay đổi từ commit C bị loại bỏ hoàn toàn khỏi staging area và working directory.
+
+
+※Dùng để gộp commit vơi git reset --soft,
+
+A - B - C - D - E (HEAD)
+Sử dụng git reset --soft để di chuyển HEAD về commit B (commit trước commit C):
+git reset --soft HEAD~3
+
+ Thực hiện commit mới：
+ git commit -m "Gộp commit C, D, và E thành một commit duy nhất"
+
+git log --oneline
+
+git push origin main --force
