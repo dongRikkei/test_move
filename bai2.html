@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Thuật toán tìm max
+      //1. Set arr[0] = max
+      // duyệt từ phần tử thứ 1 cho đến hết chuỗi
+      // Nếu phần từ arr[i] > max -> set thằng max = arr[i]
+      // Khi duyệt hết chuỗi thì ta tìm được thằng max
+      // [10,4,20]
+      // max = 10
+      // max2 = giá trị lớn thứ 2
+      // loop1: arr[i] > max ? 4 > 10 -> false
+      // loop2: arr[i] > max ? 20> 10 -> true => max2 = max, max = arr[i] = 20
+
+      // 1,5,2,6,9,3,7
+      // max = 5
+      // maxThu2 = max (5); max = 6
+
+      // duyệt đến số 9
+      // maxThu2 = max (6); max = 9
+      // maxThu2 < arr[i]
+
+      // Cách 1
+      let arr = [1, 5, 9, 2, 6, 9, 9, 3, 7];
+
+      function findSecondMax(arr) {
+        let max = arr[0];
+        let secondMax = max;
+
+        for (let index = 1; index < arr.length; index++) {
+          // Nếu arr[i] > max:
+          // - set thằng secondMax = max
+          // - set max = arr[i]
+          if (arr[index] > max) {
+            secondMax = max;
+            max = arr[index];
+            // Nếu thằng arr[i] khác max và lớn hơn thằng max thứ 2 hiện tại
+            // thay thế max thứ 2 bằng arr[i]
+          } else if (arr[index] > secondMax && arr[index] != max) {
+            secondMax = arr[index];
+          }
+        }
+
+        return secondMax;
+      }
+
+      //Cách 2:
+      function findSecondMaxWithSort(arr) {
+        // Sort giảm dần
+        arr.sort((a, b) => b - a);
+
+        // Mã sẽ là phần tử đầu tiên
+        let max = arr[0];
+
+        // filter sẽ nhận 1 tham số là function, và function đó thì phải trả về true hoặc false(boolean)
+        // filter trả về 1 mảng các giá trị thỏa mãn (true)
+        // Lấy mảng mới mà không có thằng max
+        let arrWithoutMax = arr.filter((item) => item != max);
+        let name = "Dat";
+        let address = "Rikkei";
+        console.log(`max thu 2 la ${arrWithoutMax[0]}`);
+        // console.log(`Hello ${name} den voi ${address}`);
+      }
+
+      // [1,5,9,2,6,9,9,3,7]
+
+      console.log(findSecondMaxWithSort(arr));
+    </script>
+  </head>
+  <body></body>
+</html>

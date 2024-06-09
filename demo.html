@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Chuan hoa chuoi
+      let input = "cuộc SỐNG là những Chuyến Đi thú VỊ.";
+
+      function chuanHoaChuoi(input) {
+        // THực hiện xóa khoáng trắng đầu và cuối của chuỗi trim
+        // Ví dụ: "  Cuộc sống   " -> "Cuộc sống"
+        input = input.trim();
+
+        // Biến tất cả các chữ cái trong chuỗi thành chữ thường bằng function toLowerCase
+        input = input.toLowerCase();
+
+        // Cắt chuỗi thành các từ trong mảng split
+        //split(""): cuoc song -> [c,u,o,c, ,s,o,n,g]
+        //split(" "): cuong song -> [cuoc,song]
+        let arr = input.split(" ");
+
+        // Duyệt qua từng từ
+        for (let i = 0; i < arr.length; i++) {
+          // Thực hiện in hoa chữ cái đầu tiên với charAt và toUpperCase
+          // Dùng slice để lấy các phần còn lại trong từ đó
+          // Ví dụ: cuộc = C + uộc
+          arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        }
+
+        // In ra output với join để nối tất cả các phần tử trong mảng theo 1 quy luật
+        // Ở đây là thêm " "
+        return arr.join(" ");
+      }
+
+      console.log(chuanHoaChuoi(input));
+    </script>
+  </head>
+  <body></body>
+</html>
